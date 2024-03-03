@@ -2,7 +2,7 @@ const ProductModel = require('../models/product');
 const { errorResponse, success } = require('../utils/response');
 
 async function create(payload) {
-  const newProduct = await ProductModel.create(payload);
+  const newProduct = await ProductModel.create(payload).sort({ createdAt: -1 });
   if (!newProduct) {
     return errorResponse(500, 'Unable to create product');
   }
