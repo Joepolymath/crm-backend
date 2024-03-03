@@ -2,7 +2,7 @@ const ProductModel = require('../models/product');
 const { errorResponse, success } = require('../utils/response');
 
 async function create(payload) {
-  const newProduct = await ProductModel.create(payload).sort({ createdAt: -1 });
+  const newProduct = await ProductModel.create(payload);
   if (!newProduct) {
     return errorResponse(500, 'Unable to create product');
   }
@@ -11,7 +11,7 @@ async function create(payload) {
 }
 
 async function getAll(query = {}) {
-  const foundProducts = await ProductModel.find(query);
+  const foundProducts = await ProductModel.find(query).sort({ createdAt: -1 });
   if (!foundProducts) {
     return errorResponse(404, 'Products not found');
   }
