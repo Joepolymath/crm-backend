@@ -11,7 +11,7 @@ async function create(req, res) {
 
 async function getAll(req, res) {
   try {
-    const data = await ordersServices.getAll(req.query);
+    const data = await ordersServices.getAll({ buyer: req.user.id });
     return res.status(data.statusCode).json(data);
   } catch (error) {
     return res.status(500).json({ message: 'Unable to fetch Orders' });
