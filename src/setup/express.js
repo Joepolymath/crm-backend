@@ -32,5 +32,6 @@ app.get('/', (req, res) => {
 app.use('/users', require('../routes/users'));
 app.use('/products', require('../routes/products'));
 app.use('/categories', require('../routes/categories'));
+app.use('/orders', require('../routes/orders'));
 
 module.exports = app;
