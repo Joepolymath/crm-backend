@@ -12,7 +12,9 @@ async function createMany(payload) {
 }
 
 async function getAll(query = {}) {
-  const foundProducts = await OrderModel.find(query).sort({ createdAt: -1 });
+  const foundProducts = await OrderModel.find(query)
+    .sort({ createdAt: -1 })
+    .populate('product');
   if (!foundProducts) {
     return errorResponse(404, 'Orders not found');
   }
