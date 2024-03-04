@@ -8,6 +8,10 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: 'Product',
     },
+    buyer: {
+      type: mongoose.Types.ObjectId,
+      ref: 'User',
+    },
     deliveryDate: {
       type: Date,
       default: Date.now(),
